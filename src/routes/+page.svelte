@@ -4,7 +4,8 @@
     </title>
  </svetle:head>
 
- <div class=" bg-white w-[20rem] h-[30rem] rounded-3xl grid grid-cols-4" > 
+ <div class=" bg-white w-fit h-fit 
+ rounded-3xl grid grid-cols-4 gap-4 " > 
    <button>C</button>
    <button>÷</button>
    <button>×</button>
