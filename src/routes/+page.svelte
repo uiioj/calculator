@@ -12,8 +12,18 @@
 
    }
    function backSpace (){
-      equation = equation.substring(0, equation.length - 1);
-   }
+      switch (equation.substring(equation.length-3,equation.length)){
+         case " + ":
+         case " - ":
+         case " * ":
+         case " / ":
+             equation = equation.substring(0, equation.length - 3);
+             break;
+         default:
+             equation = equation.substring(0, equation.length - 1);
+            }
+            }
+
    function clear(){
       equation = "";
    }
@@ -32,17 +42,15 @@
     </title>
  </svetle:head>
 
-<!-- TODO: fix overflowing numbers -->
- <!-- TODO: fix delete spaces -->
 
 <!--padding لتعديل  حجم الحاوية-->
- <div class="  bg-[#bec4d5]  w-fit h-fit rounded-3xl grid grid-cols-4 gap-2 p-8 text-lg font-semibold shadow-2xl" > <!--هذا الحاوية الاب-->
+ <div class="  bg-[#bec4d5]  w-fit h-fit rounded-3xl grid grid-cols-4 gap-2 p-8 text-lg font-semibold shadow-2xl max-w-[18rem]" > <!--هذا الحاوية الاب-->
 
 
 
  <!--خانة الارقام-->
- <div class="bg-[#dfe3f1] rounded-full  col-span-4 h-14
-  flex justify-end items-center px-5 mb-3 shadow-xl "> {equation} </div>
+ <div class="bg-[#dfe3f1] rounded-3xl  col-span-4 min-h-14
+  flex justify-end items-center px-5 mb-3 shadow-xl break-all "> {equation} </div>
 
    <button on:click={() => clear()} class="bg-[#990033] hover:bg-[#990033]/80 text-lg ">AC</button> <!--مسح الكل-->
 
