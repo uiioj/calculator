@@ -1,38 +1,82 @@
+ <script lang="ts">
+	
+   import DivideIcon from '$lib/icons/DivideIcon.svelte';
+   import X_Icon from '$lib/icons/X_Icon.svelte';
+   import DeleteIcon from '$lib/icons/DeleteIcon.svelte';
+   import SubtractionIcon from '$lib/icons/SubtractionIcon.svelte';
+   import PlusIcon from '$lib/icons/PlusIcon.svelte'
+   import EquaLIcon from '../lib/icons/EquaLIcon.svelte';
+
+   function addToEquation(value:string){
+      equation += value;
+
+   }
+   function backSpace (){
+      equation = equation.substring(0, equation.length - 1);
+   }
+   function clear(){
+      equation = "";
+   }
+   function solve(){
+      equation = eval(equation);
+   }
+
+  let equation: string = "";
+     
+ </script>
+
+
  <svetle:head>
     <title>
         آلة حاسبة
     </title>
  </svetle:head>
+
+<!-- TODO: fix overflowing numbers -->
+ <!-- TODO: fix delete spaces -->
+
 <!--padding لتعديل  حجم الحاوية-->
- <div class="   w-fit h-fit 
- rounded-3xl grid grid-cols-4 gap-2 p-8 text-xl font-semibold shadow-2xl" > <!--هذا الدف الاب-->
+ <div class="  bg-[#bec4d5]  w-fit h-fit rounded-3xl grid grid-cols-4 gap-2 p-8 text-lg font-semibold shadow-2xl" > <!--هذا الحاوية الاب-->
 
 
 
+ <!--خانة الارقام-->
+ <div class="bg-[#dfe3f1] rounded-full  col-span-4 h-14
+  flex justify-end items-center px-5 mb-3 shadow-xl "> {equation} </div>
 
- <div class="bg-[#d6dcef] rounded-full  col-span-4 h-14
-  flex justify-end items-center px-10 mb-3 "> 678
-</div>
-   <button class="bg-[#990033] ">AC</button>
-   <button>÷</button>
-   <button>×</button>
-   <button class="bg-[#990033]  ">DEL</button>
-   <button>7</button>
-   <button>8</button>
-   <button>9</button>
-   <button>-</button>
-   <button>4</button>
-   <button>5</button>
-   <button>6</button>
-   <button>+</button>
-   <button>1</button>
-   <button>2</button>
-   <button>3</button>
-   <button>.</button>
-   <button>%</button>
-   <button>0</button>
-   <button>√</button>
-   <button>=</button>
+   <button on:click={() => clear()} class="bg-[#990033] hover:bg-[#990033]/80 text-lg ">AC</button> <!--مسح الكل-->
+
+   <button on:click={() => addToEquation(' / ')} class="bg-[#5e626e]" > <DivideIcon/> </button> 
+
+   <button on:click={() => addToEquation(' * ')} class="text-sm bg-[#5e626e]"> <X_Icon/> </button> 
+
+   <button on:click={() => backSpace( ) } class="bg-[#990033] hover:bg-[#990033]/80  text-2xl "> <DeleteIcon/> </button> 
+
+   <button on:click={() => addToEquation('7')}>7</button>
+   <button on:click={() => addToEquation('8')}>8</button>
+   <button on:click={() => addToEquation('9')}>9</button>
+
+   <button on:click={() => addToEquation(' - ')} class="bg-[#5e626e]">  <SubtractionIcon/> </button> 
+
+   <button on:click={() => addToEquation('4')}>4</button>
+   <button on:click={() => addToEquation('5')}>5</button>
+   <button on:click={() => addToEquation('6')}>6</button>
+
+   <button on:click={() => addToEquation(' + ')} class="text-lg bg-[#5e626e]"> <PlusIcon/>  </button> 
+
+   <button on:click={() => addToEquation('1')}>1</button>
+   <button on:click={() => addToEquation('2')}>2</button>
+   <button on:click={() => addToEquation('3')}>3</button>
+
+
+   <button  on:click={() => addToEquation(' /100 ')} class="bg-[#5e626e]">%</button>
+
+   <button on:click={() => addToEquation('.')}>.</button>
+   <button on:click={() => addToEquation('0')}>0</button>
+   
+   
+
+   <button on:click={() => solve()} class="text-2xl col-span-2 "> <EquaLIcon/> </button>
 
   
  </div>
