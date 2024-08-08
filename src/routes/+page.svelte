@@ -28,29 +28,52 @@
       equation = "";
    }
    function solve(){
-      equation = eval(equation);
+      try{
+        let answer = eval(equation);
+        if (answer == undefined) throw SyntaxError;
+        equation = answer;
+      }
+
+       catch (error){
+         let output = document.getElementById('output');
+         output?.classList.add('bg-red-600');
+         setTimeout(() => {
+            output?.classList.remove('bg-red-600');
+         } , 500 );
+      }
+
+
    }
 
   let equation: string = "";
+
+  function onKeyDown(){
+   console.log('hi');
+  }
      
  </script>
 
 
  <svetle:head>
     <title>
-        آلة حاسبة
+       calculator
     </title>
  </svetle:head>
 
+ <!-- svelte-ignore a11y-no-static-element-interactions -->
+ <svetle:window on:keydown|preventDefault={onKeyDown}/>
+
 
 <!--padding لتعديل  حجم الحاوية-->
- <div class="  bg-[#bec4d5]  w-fit h-fit rounded-3xl grid grid-cols-4 gap-2 p-8 text-lg font-semibold shadow-2xl max-w-[18rem]" > <!--هذا الحاوية الاب-->
+ <div class="  bg-[#bec4d5]   h-fit rounded-3xl grid grid-cols-4 gap-2 p-8 text-lg font-semibold shadow-2xl w-[18rem]" > <!--هذا الحاوية الاب-->
 
 
 
  <!--خانة الارقام-->
- <div class="bg-[#dfe3f1] rounded-3xl  col-span-4 min-h-14
-  flex justify-end items-center px-5 mb-3 shadow-xl break-all "> {equation} </div>
+ <div 
+ id="output"
+ class="bg-[#dfe3f1] rounded-3xl  col-span-4 min-h-14
+  flex justify-end items-center px-5 mb-3 shadow-xl overflow-auto transition-all "> {equation} </div>
 
    <button on:click={() => clear()} class="bg-[#990033] hover:bg-[#990033]/80 text-lg ">AC</button> <!--مسح الكل-->
 
