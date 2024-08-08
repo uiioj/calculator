@@ -61,7 +61,7 @@
  </svetle:head>
 
  <!-- svelte-ignore a11y-no-static-element-interactions -->
- <svetle:window on:keydown|preventDefault={onKeyDown}/>
+ <svelte:window on:keydown|preventDefault={onKeyDown}/>
 
 
 <!--padding لتعديل  حجم الحاوية-->
@@ -72,8 +72,8 @@
  <!--خانة الارقام-->
  <div 
  id="output"
- class="bg-[#dfe3f1] rounded-3xl  col-span-4 min-h-14
-  flex justify-end items-center px-5 mb-3 shadow-xl overflow-auto transition-all "> {equation} </div>
+ class="bg-[#dfe3f1] text-end rounded-3xl  col-span-4 min-h-14
+  flex  items-center px-5 mb-3 shadow-xl break-all transition-all "> {equation} </div>
 
    <button on:click={() => clear()} class="bg-[#990033] hover:bg-[#990033]/80 text-lg ">AC</button> <!--مسح الكل-->
 
